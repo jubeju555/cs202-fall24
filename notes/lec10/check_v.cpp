@@ -28,7 +28,8 @@ int main() {
     it = find (data.begin(), data.end(), line);
     if (it == data.end())  // if STL iterator equals end, it is not found!
       cout << "Element not found in data from stdin" << endl;
-
+  if (it != data.end())  // if it hasnt hit it, it means it has found it 
+      cout << *it << "was found ??" << endl; 
   }
 
 }

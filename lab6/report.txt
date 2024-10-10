@@ -1,0 +1,23 @@
+// test times
+/*
+make test times
+time1: .442s
+time2: .242s
+time3: .246s
+
+maketest times binary_search
+time 1: 6.08s
+time 2: 6.02s
+time 3: 6.02s
+
+maketest times map
+time1: 6.28s
+time2: 6.27s
+time3: 6.22s
+
+maxvalue times
+time1: 6.24s
+time2: 6.02s
+time3: 5.98s
+
+*/
