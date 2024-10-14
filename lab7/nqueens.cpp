@@ -24,6 +24,7 @@ void print(vector<int> &board)
   // board.push_back(n);
   //  }
 
+
   for (int i = 0; i < board.size(); i++)
   {
     cout << board[i] << " ";
