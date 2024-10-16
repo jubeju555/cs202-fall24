@@ -43,19 +43,18 @@ void print(vector<int> &board)
 
 void nqueens(vector<int> &board, int row, int size)
 {
-  // if (row == size)
-  // {
-  //   print(board);
-  //   return;
-  // }
+  if (row == size)
+  {
+    print(board);
+    return;
+  }
 
   for (int col = 0; col < size; col++)
   {
-    isvalid(board, size, row, col);
-
+    if(isvalid(board, size, row, col)){
     board[row] = col;
-
     nqueens(board, row + 1, size);
+    }   
   }
 }
 
