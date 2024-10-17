@@ -14,8 +14,11 @@ google: #include for abs()
 #include <algorithm>
 using namespace std;
 
+int boardCounter = 0;
+
 bool isvalid(vector<int> &board, int size, int row, int col)
 {
+   boardCounter++;
   for (int r = 0; r < row; r++)
   {
     int c = board[r];
@@ -27,17 +30,8 @@ bool isvalid(vector<int> &board, int size, int row, int col)
   }
   return true;
 }
-
 void print(vector<int> &board)
 {
-  // int n = 4;
-  // vector <int> & board(n, -1);
-  //  cout << "what size you you want" << endl;
-  //  while (cin >> n)
-  //  {
-  // board.push_back(n);
-  //  }
-
   for (int i = 0; i < board.size(); i++)
   {
     cout << board[i];
@@ -46,27 +40,24 @@ void print(vector<int> &board)
       cout << ",";
     }
   }
-
   cout << endl;
 }
 void nqueens(vector<int> &board, int row, int size)
 {
-  if (row == size)
-  {
-    print(board);
-    return;
-  }
-
   for (int col = 0; col < size; col++)
   {
-
     if (isvalid(board, size, row, col))
     {
       board[row] = col;
       nqueens(board, row + 1, size);
     }
   }
-}
+if (row == size)
+  {
+    print(board);
+    return;
+  }
+  }
 int main(int argc, char *argv[])
 {
   int n = 4;
@@ -75,5 +66,6 @@ int main(int argc, char *argv[])
 
   vector<int> board(n, -1);
   nqueens(board, 0, n);
+  cout << boardCounter;
   return 0;
 }

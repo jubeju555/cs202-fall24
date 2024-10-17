@@ -1,0 +1,31 @@
+report 
+nqueens: 
+
+8: 16777216
+
+10:10000000000
+
+
+nqueens2:
+
+8: 15720
+
+10:355390
+
+
+
+ In your own words, what is the benefit of a recursive solution to
+enumerate all of the nqueens potential solutions (2 points)
+
+by goign through all possible solutions you ensure that no solutions that may have been missed are skipped. 
+when it comes to more and more complex problems the amount of solutions becomes unclear as well as the pattern
+that they appear. so ensuring that every solution is thought through even though it may take a little more time, 
+willensure that the accuaracy is higher. 
+
+- Also in your own words, what are the theoretical and/or practical
+advantages of constraining the search space to only still valid 
+solutions?
+
+a recursive solution cuts down on the number of solutions/ calculations that the computer has
+to calculate, by getting rid of a set of solutions that are deemed to be invalid by a certain set of 
+constraints, you en able the computer to reduce the time it takes to calucate all possible solution. 

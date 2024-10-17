@@ -14,8 +14,22 @@ google: #include for abs()
 #include <algorithm>
 using namespace std;
 
+long long boardCounter = 0;
+void print(vector<int> &board)
+{
+  for (int i = 0; i < board.size(); i++)
+  {
+    cout << board[i];
+    if (i < board.size() - 1)
+    {
+      cout << ",";
+    }
+  }
+  cout << endl;
+}
 bool isvalid(vector<int> &board, int size, int row, int col)
 {
+  boardCounter++;
   for (int r = 0; r < row; r++)
   {
     int c = board[r];
@@ -24,46 +38,38 @@ bool isvalid(vector<int> &board, int size, int row, int col)
     {
       return false;
     }
-  }
-  return true;
-}
-
-void print(vector<int> &board)
-{
-  for (int i = 0; i < board.size(); i++)
-  {
-    cout << board[i];
-    if (i < board.size() - 1)
-    {
-      cout << ", ";
-    }
-  }
-  cout << endl;
+      return true;
+  }  
 }
 
 void nqueens(vector<int> &board, int row, int size)
 {
+  int col;
   if (row == size)
   {
-    print(board);
-    return;
+    if (isvalid(board, size, row, col) == true)
+    {
+      print(board);
+    }
   }
-
-  for (int col = 0; col < size; col++)
+  else
   {
-    if(isvalid(board, size, row, col)){
-    board[row] = col;
-    nqueens(board, row + 1, size);
-    }   
+    for (int col = 0; col < size; col++)
+    {
+      board[row] = col;
+      nqueens(board, row + 1, size);
+      // print(board);
+    }
   }
+  return;
 }
-
 int main(int argc, char *argv[])
 {
   int n = 4;
-  // cout << "what size you you want" << endl;
+  cout << "what size you you want" << endl;
   cin >> n;
   vector<int> board(n, -1);
   nqueens(board, 0, n);
+  cout << boardCounter;
   return 0;
 }
