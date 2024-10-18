@@ -7,7 +7,6 @@ w3school: how to write recursive funtion
 google: #include for abs()
 
 */
-
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -15,8 +14,24 @@ google: #include for abs()
 #include <algorithm>
 #include <string>
 using namespace std;
-long long boardCounter = 0;
 
+int boardCounter = 0;
+
+bool isvalid(vector<int> &board, int size, int row, int col)
+{
+  boardCounter++;
+  for (int i = 0; i < board.size(); i++)
+  {
+    for (int j = i + 1; j < board.size(); j++)
+    {
+      if (abs(i - j) == abs(board[i] - board[j]) || board[i] == board[j])
+      {
+        return false;
+      }
+    }
+  }
+ return true;
+}
 void print(vector<int> &board)
 {
   for (int i = 0; i < board.size(); i++)
@@ -29,65 +44,35 @@ void print(vector<int> &board)
   }
   cout << endl;
 }
-
-bool isvalid(vector<int> &board, int size, int row )
-{
-  int col;
-  boardCounter++;
-  for (int r = 0; r < board.size(); r++)
-  {
-    int c = board[r];
-    if (board[col] == board[r] && r != col)
-    {
-      return false;
-    }
-
-    if (abs(r - row) == abs(board[col] - board[r]) && r != col)
-    {
-      return false;
-    }
-  }
-  print(board);
-  return true;
-}
-
 void nqueens(vector<int> &board, int row, int size)
 {
+  int col;
   if (row == size)
   {
-    if (isvalid(board, size, row))
-    {
-      for (int col = 0; col < size - 1; col++)
+    // isvalid(board, size, row, col);
+    if (isvalid(board, size, row, col) == true)
     {
       print(board);
-    }
-      return;
-
     }
   }
   else
   {
-    for (int i = 0; i < size; i++)
+    for (int col = 0; col < size; col++)
     {
-      board[row] = i;
+      board[row] = col;
       nqueens(board, row + 1, size);
     }
   }
-}
 
+  return;
+}
 int main(int argc, char *argv[])
 {
-  // int n = atoi(argv[1]);
-  // // cout << "what size you you want" << endl;
-  // vector<int> board(n, -1);
-  // nqueens(board, 0, n);
-  // cout << boardCounter;
-  // return 0;
-  int n = 4;
-  cout << "what size you you want" << endl;
-  cin >> n;
+  int n = atoi(argv[1]);
+  // cout << "what size you you want" << endl;
+  // cin >> n;
   vector<int> board(n, -1);
   nqueens(board, 0, n);
-  cout << boardCounter;
+  // cout << boardCounter;
   return 0;
 }
