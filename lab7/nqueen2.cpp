@@ -18,7 +18,7 @@ int boardCounter = 0;
 
 bool isvalid(vector<int> &board, int size, int row, int col)
 {
-   boardCounter++;
+  boardCounter++;
   for (int r = 0; r < row; r++)
   {
     int c = board[r];
@@ -37,7 +37,7 @@ void print(vector<int> &board)
     cout << board[i];
     if (i < board.size() - 1)
     {
-      cout << ",";
+      cout << ", ";
     }
   }
   cout << endl;
@@ -52,18 +52,17 @@ void nqueens(vector<int> &board, int row, int size)
       nqueens(board, row + 1, size);
     }
   }
-if (row == size)
+  if (row == size)
   {
     print(board);
     return;
   }
-  }
+}
 int main(int argc, char *argv[])
 {
   int n = 4;
   cout << "what size you you want" << endl;
   cin >> n;
-
   vector<int> board(n, -1);
   nqueens(board, 0, n);
   cout << boardCounter;
