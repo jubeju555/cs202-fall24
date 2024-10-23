@@ -5,7 +5,7 @@ lab 7
 sources:
 w3school: how to write recursive funtion
 google: #include for abs()
-
+jackson: helpmed me restructure from queens 2 to 1, advised for nested for loop and helped with altered vaild funciton 
 */
 #include <iostream>
 #include <vector>
@@ -20,6 +20,7 @@ int boardCounter = 0;
 bool isvalid(vector<int> &board, int size, int row, int col)
 {
   boardCounter++;
+  // double nested for loop that iterates through every possible board, and checks if the queens will colide
   for (int i = 0; i < board.size(); i++)
   {
     for (int j = i + 1; j < board.size(); j++)
@@ -32,6 +33,7 @@ bool isvalid(vector<int> &board, int size, int row, int col)
   }
  return true;
 }
+// prints out board, called to print out current board
 void print(vector<int> &board)
 {
   for (int i = 0; i < board.size(); i++)
@@ -44,12 +46,14 @@ void print(vector<int> &board)
   }
   cout << endl;
 }
+
 void nqueens(vector<int> &board, int row, int size)
 {
   int col;
+  // if all the columns are full
   if (row == size)
   {
-    // isvalid(board, size, row, col);
+    // check if the board is valid
     if (isvalid(board, size, row, col) == true)
     {
       print(board);
@@ -57,20 +61,19 @@ void nqueens(vector<int> &board, int row, int size)
   }
   else
   {
+    // if the bord is not valid yet keep going through it
     for (int col = 0; col < size; col++)
     {
       board[row] = col;
       nqueens(board, row + 1, size);
     }
   }
-
   return;
 }
+
 int main(int argc, char *argv[])
 {
   int n = atoi(argv[1]);
-  // cout << "what size you you want" << endl;
-  // cin >> n;
   vector<int> board(n, -1);
   nqueens(board, 0, n);
   // cout << boardCounter;

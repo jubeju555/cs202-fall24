@@ -14,18 +14,21 @@ nqueens2:
 
 
 
- In your own words, what is the benefit of a recursive solution to
+In your own words, what is the benefit of a recursive solution to
 enumerate all of the nqueens potential solutions (2 points)
 
-by goign through all possible solutions you ensure that no solutions that may have been missed are skipped. 
-when it comes to more and more complex problems the amount of solutions becomes unclear as well as the pattern
-that they appear. so ensuring that every solution is thought through even though it may take a little more time, 
-willensure that the accuaracy is higher. 
+By going through all possible solutions, the brute force method ensures that no valid 
+solutions are missed. When dealing with increasingly complex problems, the number of 
+possible solutions can grow, and the patterns in which they appear may become unclear. 
+However, by thoroughly considering every solution, even though it may take more time, 
+you can ensure higher accuracy.
 
 - Also in your own words, what are the theoretical and/or practical
 advantages of constraining the search space to only still valid 
 solutions?
 
-a recursive solution cuts down on the number of solutions/ calculations that the computer has
-to calculate, by getting rid of a set of solutions that are deemed to be invalid by a certain set of 
-constraints, you en able the computer to reduce the time it takes to calucate all possible solution. 
+A recursive solution reduces the number of calculations the computer needs to perform by 
+eliminating sets of solutions that are invalid based on predefined constraints. 
+By pruning these invalid options early, the computer can focus only on valid possibilities, 
+significantly reducing the time it takes to find all possible solutions.
+
