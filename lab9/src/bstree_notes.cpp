@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdio>
 #include "bstree.hpp"
+#include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTree;
 using CS140::BSTNode;

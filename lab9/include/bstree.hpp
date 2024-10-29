@@ -19,11 +19,9 @@ class BSTNode {
 
 class BSTree {
   public:
-
     /* Constructor, copy constructor, assignment overlead, destructor.
        I am only implementing the constructor and destructor here in the notes.
        You will implement the other two in your lab. */
-
     BSTree();
     BSTree(const BSTree &t);
     BSTree& operator= (const BSTree &t);
@@ -44,8 +42,8 @@ class BSTree {
 
     /* You'll write these as part of your lab. */
 
-    int Depth(const std::string &key) const;           // Distance from a node to the root.  Returns -1 if the key is not in the tree.
-    int Height() const;                                // Returns the depth of the node with maximum depth, plus one.
+    int Depth(const std::string &key, int x) const;           // Distance from a node to the root.  Returns -1 if the key is not in the tree.
+    int Height(int x) const;                                // Returns the depth of the node with maximum depth, plus one.
 
   protected:
     BSTNode *sentinel;                                 // Like the dlists, there is a sentinel.  Its right points to the root.

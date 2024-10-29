@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdio>
 #include "bstree.hpp"
+#include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTree;
 using CS140::BSTNode;
@@ -10,15 +11,41 @@ using CS140::BSTNode;
 /* ---------------------------------------------- */
 /* You'll write all of these as part of your lab. */
 
-int BSTree::Depth(const string &key) const
+int BSTree::Depth(const string &key, int x) const
 {
   (void) key;
-  return -1;
+  if (key.empty()) return -1;
+
+  int dist = 0;
+
+  if (key.empty())
+  {
+    
+    if ((dist = Depth(key->left, x)) >= 0)
+    {
+      return dist + 1;
+    }
+    else if ((dist = Depth(key->right, x)) >= 0)
+    {
+      return dist + 1;
+    }
+    // else
+    // {
+    //   return ;
+    // }
+      return dist;
+  }
 }
-           
-int BSTree::Height() const
+
+
+int BSTree::Height(int x) const
 {
-  return -1;
+  int n;
+  int h = -1;
+
+  int maxheight = recursive_find_height();
+
+  return h;
 }
 
 vector <string> BSTree::Ordered_Keys() const

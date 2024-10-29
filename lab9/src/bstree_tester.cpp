@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTree;
 
