@@ -39,7 +39,6 @@ const BSTNode *n = sentinel->right;
     
 return -1;
 
-
     // if ((dist = Depth(sentinel, x)) >= 0)
     // {
     //   return dist + 1;
@@ -53,8 +52,6 @@ return -1;
     //   return ;
     // }
   }
-
-
 
 int BSTree::Height() const
 {
