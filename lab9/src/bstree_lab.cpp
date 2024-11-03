@@ -63,6 +63,8 @@ vector <string> BSTree::Ordered_Keys() const
 {
   vector <string> rv;
   return rv;
+  make_key_vector(sentinel->right, rv);
+
 }
     
 BSTree::BSTree(const BSTree &t)        
@@ -93,6 +95,8 @@ void BSTree::make_key_vector(const BSTNode *n, vector<string> &v) const
 {
   (void) n;
   (void) v;
+  
+  
 }
 
 BSTNode *BSTree::make_balanced_tree(const vector<string> &sorted_keys, 
