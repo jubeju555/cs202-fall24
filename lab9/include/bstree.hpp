@@ -1,3 +1,4 @@
+#pragma once
 /* BSTrees are binary search trees. */
 
 #include <vector>
