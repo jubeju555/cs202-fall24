@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdio>
 #include "bstree.hpp"
-#include "../include/bstree.hpp"
+// #include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTNode;
 using CS140::BSTree;
@@ -14,13 +14,15 @@ using CS140::BSTree;
 int BSTree::Depth(const string &key) const
 {
   (void)key;
-  if (key.empty())
-    return -1;
+  if (key.empty()) return -1;
 
   int depth = 0;
-  const BSTNode *n = sentinel->right;
+  const BSTNode *n = sentinel->right;  
+  const BSTNode *parent = sentinel;
+  const BSTNode *child = sentinel;
+  
 
-  while (n != NULL)
+  while (n != sentinel)
   {
     if (key == n->key)
     {
@@ -36,7 +38,6 @@ int BSTree::Depth(const string &key) const
     }
     depth++;
   }
-
   return -1;
 
   // if ((dist = Depth(sentinel, x)) >= 0)
@@ -56,8 +57,21 @@ int BSTree::Depth(const string &key) const
 int BSTree::Height() const
 {
   // do i start from 0 or the root or are they the same thing?
-  return recursive_find_height(sentinel->right, 0);
-}
+  // if (sentinel->right == NULL)
+  // {
+  //   return 0;
+  // }
+  // if (sentinel->right->left == NULL && sentinel->right->right == NULL)
+  // {
+  //   return 1;
+  // }
+  while (sentinel->right != sentinel)
+  {
+    return recursive_find_height(sentinel->right, 0);
+  }
+  
+  return 0;
+  }
 
 vector<string> BSTree::Ordered_Keys() const
 {
@@ -93,10 +107,7 @@ BSTree &BSTree::operator=(const BSTree &t)
 int BSTree::recursive_find_height(const BSTNode *n, int x) const
 {
   (void)n;
-  if (n == NULL)
-  {
-    return -1;
-  }
+
   int left = recursive_find_height(n->left, x);
   int right = recursive_find_height(n->right, x);
 
