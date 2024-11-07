@@ -2,8 +2,9 @@
 #include <string>
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
 #include "bstree.hpp"
-// #include "../include/bstree.hpp"
+#include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTNode;
 using CS140::BSTree;
@@ -18,9 +19,6 @@ int BSTree::Depth(const string &key) const
 
   int depth = 0;
   const BSTNode *n = sentinel->right;  
-  const BSTNode *parent = sentinel;
-  const BSTNode *child = sentinel;
-  
 
   while (n != sentinel)
   {
@@ -65,12 +63,12 @@ int BSTree::Height() const
   // {
   //   return 1;
   // }
-  while (sentinel->right != sentinel)
+  if (sentinel->right == sentinel)
   {
-    return recursive_find_height(sentinel->right, 0);
+    return -1;
   }
-  
-  return 0;
+  return recursive_find_height(sentinel->right);
+
   }
 
 vector<string> BSTree::Ordered_Keys() const
@@ -90,7 +88,15 @@ BSTree::BSTree(const BSTree &t)
   sentinel->key = "";
   sentinel->val = NULL;
 
-  size = 0;
+  size = t.size;
+
+    if (t.sentinel->right != t.sentinel)
+    {
+      vector<string> sorted_keys = t.Ordered_Keys();
+      vector<void *> vals = t.Ordered_Vals();
+      sentinel->right = make_balanced_tree(sorted_keys, vals, 0, sorted_keys.size());
+    }
+    
 }
 
 BSTree &BSTree::operator=(const BSTree &t)
@@ -99,17 +105,28 @@ BSTree &BSTree::operator=(const BSTree &t)
   if (this != &t)
   {
     Clear();
+    size = t.size; 
+    
+    if (t.sentinel->right != t.sentinel)
+  {
+    vector<string> sorted_keys = t.Ordered_Keys();
+    vector<void *> vals = t.Ordered_Vals();
+    sentinel->right = make_balanced_tree(sorted_keys, vals, 0, sorted_keys.size());
+    }
   }
-
+  
   return *this;
 }
 
-int BSTree::recursive_find_height(const BSTNode *n, int x) const
+int BSTree::recursive_find_height(const BSTNode *n) const
 {
-  (void)n;
+  if (n == sentinel)
+  {
+    return 0;
+  }
 
-  int left = recursive_find_height(n->left, x);
-  int right = recursive_find_height(n->right, x);
+  int right = recursive_find_height(n->right);
+  int left = recursive_find_height(n->left);
 
   return 1 + max(left, right);
 }
@@ -131,22 +148,26 @@ BSTNode *BSTree::make_balanced_tree(const vector<string> &sorted_keys,
                                     size_t first_index,
                                     size_t num_indices) const
 {
+
   (void)sorted_keys;
   (void)vals;
   (void)first_index;
   (void)num_indices;
-  return NULL;
 
   if (num_indices == 0)
   {
-    return NULL;
+    return sentinel;
   }
   size_t mid = first_index + num_indices / 2;
 
   BSTNode *node = new BSTNode();
   node->key = sorted_keys[mid];
   node->val = vals[mid];
+  node->parent = sentinel;
 
-  node->left = make_balanced_tree(sorted_keys, vals, first_index, mid);
-  node->right = make_balanced_tree(sorted_keys, vals, mid + 1, num_indices - mid - 1);
+  node->left = make_balanced_tree(sorted_keys, vals, first_index, mid - first_index);
+  node->right = make_balanced_tree(sorted_keys, vals, mid + 1, num_indices - (mid + 1 - first_index));
+  
+  return node;
+
 }
