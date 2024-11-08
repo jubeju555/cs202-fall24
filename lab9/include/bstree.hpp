@@ -56,7 +56,7 @@ class BSTree {
 
     /* You'll write these as part of your lab. */
 
-    int recursive_find_height(const BSTNode *n, int x) const;                        // A helper for Height()
+    int recursive_find_height(const BSTNode *n) const;                        // A helper for Height()
     void make_key_vector(const BSTNode *n, std::vector<std::string> &v) const; // A helper for Ordered_Keys()
     BSTNode *make_balanced_tree(const std::vector<std::string> &sorted_keys,   // A helper for the copy constructor and assignment overload.
                                 const std::vector<void *> &vals,
