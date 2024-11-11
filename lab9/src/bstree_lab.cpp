@@ -4,10 +4,15 @@
 #include <cstdio>
 #include <algorithm>
 #include "bstree.hpp"
-#include "../include/bstree.hpp"
+// #include "../include/bstree.hpp"
 using namespace std;
 using CS140::BSTNode;
 using CS140::BSTree;
+// judah benjamin 
+// 2/26/2021
+// lab 9
+// jbenjam7
+
 // sources: ria helped with finishing balanced trees, 
 // jackson: helped with hwo to keep trand and coutn depth and hights
 /* ---------------------------------------------- */
