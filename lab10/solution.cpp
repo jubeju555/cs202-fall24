@@ -16,25 +16,33 @@ cppreference: push heap and pop heap definitions
 
 
 using namespace std;
+class solution
+{
+private:
 
-int heappop(){
-vector<int> heap;
-make_heap(heap.begin(), heap.end());
-println("after make_heap: ", heap);
-heap.pop_back();
-println("after make_heap: ", heap);
-pop_heap(heap.begin(), heap.end());
-println("after make_heap: ", heap);
-}
-
-
-
+public:
+    vector<int> heap;
+    int heappop();
+    int heappush();
+};
 
 int main(int argc, char *argv[]) {
 
 
 
+}
 
+int solution::heappop(){
+make_heap(heap.begin(), heap.end());
 
 
 }
+
+int solution::heappush(){
+make_heap(heap.begin(), heap.end());
+heap.pop_back();
+pop_heap(heap.begin(), heap.end());
+}
+
+
+
