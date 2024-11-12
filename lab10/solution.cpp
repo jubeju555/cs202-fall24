@@ -34,6 +34,9 @@ int main(int argc, char *argv[]) {
 
 int solution::heappop(){
 make_heap(heap.begin(), heap.end());
+heap.pop_back();
+pop_heap(heap.begin(), heap.end());
+return heap.back();
 
 
 }
@@ -42,6 +45,9 @@ int solution::heappush(){
 make_heap(heap.begin(), heap.end());
 heap.pop_back();
 pop_heap(heap.begin(), heap.end());
+sort_heap(heap.begin(), heap.end());
+return heap.back();
+
 }
 
 
