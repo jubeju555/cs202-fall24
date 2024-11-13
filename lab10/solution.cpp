@@ -68,44 +68,34 @@ bool maxheap(vector<int> &heap)
     {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        if (heap[left] > heap[i] || heap[right] > heap[i])
+        if (left < heap.size() && heap[left] > heap[i]  )
         {
             return false;
         }
+        if (right < heap.size()  && heap[right] > heap[i])
+        {
+            return false;
+        }
+
     }
     return true;
 }
-
-int findsmallest(vector <int> &heap){
-    make_heap(heap.begin(), heap.end());
-    if (maxheap(heap)){
-        return -1;
-    }
-    int min = *min_element(heap.begin(), heap.end());
-    return min;
-    
-}
-// int solution::heappush(){
-// make_heap(heap.begin(), heap.end());
-// heap.pop_back();
-// pop_heap(heap.begin(), heap.end());
-// sort_heap(heap.begin(), heap.end());
-// return heap.back();
-// }
 
 int main(int argc, char *argv[])
 {
     int k;
     int n; 
-    cin >> k;
-    cin >> n;
-    vector<int> heap(n);
+    while (cin >> n >> k)
+    {
+    vector<int> arr(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> heap[i];
+        cin >> arr[i];
     }
-    // bool ismax = maxheap(heap);
-    cout << (maxheap(heap) ? "Y" : "N")  << " " ;
-    cout << findsmallest(heap) << endl;
+    cout << (maxheap(arr) ? "Y" : "N")  << "  " ;
+     sort(arr.begin(), arr.end());  
+    int smallest = arr[k - 1];  
+    cout << smallest << endl;
+ }
     return 0;
 }
