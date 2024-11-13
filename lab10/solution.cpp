@@ -13,6 +13,7 @@ geeks4geeks: determining whether min or max heap
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <sstream>
 
 using namespace std;
 
@@ -57,6 +58,7 @@ int heappop(vector<int> &heap)
     heap.front() = heap.back();
     heap.pop_back();
     percdown(heap);
+    
     return root;
 }
 
@@ -76,7 +78,7 @@ bool maxheap(vector<int> &heap)
 
 int findsmallest(vector <int> &heap){
     make_heap(heap.begin(), heap.end());
-    
+    if
     
 }
 // int solution::heappush(){
@@ -89,8 +91,10 @@ int findsmallest(vector <int> &heap){
 
 int main(int argc, char *argv[])
 {
+    
+        
     int k;
-    int n;
+    int n; 
     cin >> k;
     cin >> n;
     vector<int> heap(n);
@@ -98,7 +102,8 @@ int main(int argc, char *argv[])
     {
         cin >> heap[i];
     }
-    bool ismax = maxheap(heap);
+    // bool ismax = maxheap(heap);
     cout << (maxheap(heap) ? "Y" : "N") << endl;
 
+    return 0;
 }
