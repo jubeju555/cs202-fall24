@@ -78,7 +78,11 @@ bool maxheap(vector<int> &heap)
 
 int findsmallest(vector <int> &heap){
     make_heap(heap.begin(), heap.end());
-    if
+    if (maxheap(heap)){
+        return -1;
+    }
+    int min = *min_element(heap.begin(), heap.end());
+    return min;
     
 }
 // int solution::heappush(){
@@ -103,7 +107,7 @@ int main(int argc, char *argv[])
         cin >> heap[i];
     }
     // bool ismax = maxheap(heap);
-    cout << (maxheap(heap) ? "Y" : "N") << endl;
-
+    cout << (maxheap(heap) ? "Y" : "N")  << " " ;
+    cout << findsmallest(heap) << endl;
     return 0;
 }
