@@ -95,8 +95,6 @@ int findsmallest(vector <int> &heap){
 
 int main(int argc, char *argv[])
 {
-    
-        
     int k;
     int n; 
     cin >> k;
