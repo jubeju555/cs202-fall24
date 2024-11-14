@@ -16,12 +16,9 @@ geeks4geeks: determining whether min or max heap
 #include <sstream>
 
 using namespace std;
-
+// write a function that perculates down the tree to find the kthsmallest element
 void percdown(vector<int> &heap)
 {
-    // heap[0] = heap[heap.size()-1];
-    // heap.pop_back();
-
     int i = 0;
 
     while (i < heap.size())
@@ -48,7 +45,7 @@ void percdown(vector<int> &heap)
         i = min;
     }
 }
-
+// take the heap and pop the element to the back of the heap
 int heappop(vector<int> &heap)
 {
     if (heap.empty())
@@ -61,7 +58,7 @@ int heappop(vector<int> &heap)
     
     return root;
 }
-
+// find if the heap valid or a max heap
 bool maxheap(vector<int> &heap)
 {
     for (int i = 0; i < heap.size(); i++)
@@ -81,6 +78,7 @@ bool maxheap(vector<int> &heap)
     return true;
 }
 
+// int main
 int main(int argc, char *argv[])
 {
     int k;

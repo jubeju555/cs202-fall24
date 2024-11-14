@@ -2,7 +2,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <random>
+#include <chrono>
 #include <algorithm>
+#include <random>
+#include <iterator>
 using namespace std;
 /*use the assignment Operator or the default constructor to deal the cards
 then take copy constructor and copy what was dealt and maybe last card
@@ -46,7 +49,7 @@ void CardDeck::printshuffle()
     cout << "please pick a seed number: ";
     cin >> seed;
     cout << endl;
-    default_random_engine rng(seed);
+    std::default_random_engine rng(seed);
     // Printing our array
     for (int i = 0; i < 9; i++)
     {
