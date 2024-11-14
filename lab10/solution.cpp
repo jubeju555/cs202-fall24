@@ -8,6 +8,7 @@
 sources:
 cppreference: push heap and pop heap definitions
 geeks4geeks: determining whether min or max heap
+keaton: bullied me for not having a heapify function 
 */
 
 #include <iostream>
@@ -45,22 +46,18 @@ void heapify(vector<int> &heap)
         percdown(heap, n, i);
     }
 }
-
 // take the heap and pop the element to the back of the heap
 int heapop(vector<int> &heap)
 {
     int n = heap.size();
-    if (n == 0)
-    {
-        return -1;
-    }
+    if (n == 0) return -1;
+
     int result = heap[0];
     heap[0] = heap[n - 1];
     heap.pop_back();
     percdown(heap,heap.size(), 0);
     return result;
 }
-
 // find if the heap valid or a max heap
 bool maxheap(vector<int> &heap)
 {
@@ -79,13 +76,11 @@ bool maxheap(vector<int> &heap)
     }
     return true;
 }
-
 // int main
 int main(int argc, char *argv[])
 {
     int k, n; 
         int kth = 0;
-
     while (cin >> n >> k)
     {
     vector<int> arr(n);
@@ -101,6 +96,5 @@ int main(int argc, char *argv[])
     }
     cout << kth << endl;
  }
-
     return 0;
 }
