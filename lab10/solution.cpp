@@ -1,5 +1,5 @@
 // Lab 10: kth smallest numbers
-// Name:  judah benjamin
+// Name: judah benjamin
 
 // Brief description:
 
@@ -9,55 +9,58 @@ sources:
 cppreference: push heap and pop heap definitions
 geeks4geeks: determining whether min or max heap
 */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <queue>
-#include <sstream>
+// #include <sstream>
 
 using namespace std;
 // write a function that perculates down the tree to find the kthsmallest element
-void percdown(vector<int> &heap)
+void percdown(vector<int> &heap, int n, int i)
 {
-    int i = 0;
-
-    while (i < heap.size())
-    {
+        int smallest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        int min = i;
+        if (left < n && heap[left] < heap[smallest])
+        {
+            smallest = left;
+        }
+        if (right < n && heap[right] < heap[smallest])
+        {
+            smallest = right;
+        }
+        if (smallest != i)
+        {
+            swap(heap[i], heap[smallest]);
+            percdown(heap, n, smallest);
+        }
+}
 
-        if (left < heap.size() && heap[left] < heap[min])
-        {
-            min = left;
-        }
-        if (right > heap.size() && heap[right] > heap[min])
-        {
-            min = right;
-        }
-        if (min == i)
-        {
-            break;
-        }
-        int temp = heap[i];
-        heap[i] = heap[min];
-        heap[min] = temp;
-        i = min;
+void heapify(vector<int> &heap)
+{
+    int n = heap.size();
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
+        percdown(heap, n, i);
     }
 }
-// take the heap and pop the element to the back of the heap
-int heappop(vector<int> &heap)
-{
-    if (heap.empty())
-        return -1;
 
-    int root = heap.front();
-    heap.front() = heap.back();
+// take the heap and pop the element to the back of the heap
+int heapop(vector<int> &heap)
+{
+    int n = heap.size();
+    if (n == 0)
+    {
+        return -1;
+    }
+    int result = heap[0];
+    heap[0] = heap[n - 1];
     heap.pop_back();
-    percdown(heap);
-    
-    return root;
+    percdown(heap,heap.size(), 0);
+    return result;
 }
+
 // find if the heap valid or a max heap
 bool maxheap(vector<int> &heap)
 {
@@ -65,7 +68,7 @@ bool maxheap(vector<int> &heap)
     {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        if (left < heap.size() && heap[left] > heap[i]  )
+        if (left < heap.size() && heap[left] > heap[i])
         {
             return false;
         }
@@ -73,7 +76,6 @@ bool maxheap(vector<int> &heap)
         {
             return false;
         }
-
     }
     return true;
 }
@@ -81,8 +83,9 @@ bool maxheap(vector<int> &heap)
 // int main
 int main(int argc, char *argv[])
 {
-    int k;
-    int n; 
+    int k, n; 
+        int kth = 0;
+
     while (cin >> n >> k)
     {
     vector<int> arr(n);
@@ -91,9 +94,13 @@ int main(int argc, char *argv[])
         cin >> arr[i];
     }
     cout << (maxheap(arr) ? "Y" : "N")  << "  " ;
-     sort(arr.begin(), arr.end());  
-    int smallest = arr[k - 1];  
-    cout << smallest << endl;
+    heapify(arr);
+    for (int i = 0; i < k; i++)
+    {
+        kth = heapop(arr);
+    }
+    cout << kth << endl;
  }
+
     return 0;
 }
