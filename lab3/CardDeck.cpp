@@ -11,8 +11,7 @@ use copy constructor to keep the memory of the old cards and keep playing. */
 // write the main constuctor 
 CardDeck::CardDeck(int n) : size(n), Cards(n)
 {
-    // cout << "Input deck size: (-1 for 52)" << endl;
-    //     cin >> size; 
+  
        Cards.resize(size);
     refill();
 }
@@ -37,7 +36,6 @@ CardDeck::~CardDeck()
 
 int CardDeck::getsize()
 {
-    // cout << arr.size() << endl;
     return Cards.size();
 }
 // display shuffle
@@ -57,7 +55,6 @@ void CardDeck::printshuffle()
     cout << endl;
     // i think i have to put std:: so that it doenst confuse it with calling its own function
     std::shuffle(Cards.begin(), Cards.end(), rng);
-    // cout << "after shuffle" << endl;
     for (int i = 0; i < 9; i++)
     {
         cout << (Cards[i] % 10) << " ";
@@ -92,8 +89,7 @@ int CardDeck::dealcard()
 bool CardDeck::checkwin(int playervalue, int dealervalue)
 {
     string game;
-    // int playervalue, dealervalue;
-    // cout <<  << endl;
+ 
     if (playervalue > 21)
     {
         cout << "You bust!!" << endl;
@@ -179,11 +175,9 @@ void CardDeck::play()
                 {
                     dealervalue += dealcard();
                 }
-                // checkwin(playervalue, dealervalue);
 
                 cout << endl;
                 cout << "The house has: " << dealervalue << endl;
-                // checkwin(playervalue, dealervalue);
 
                 if (playervalue > dealervalue && playervalue <= 21)
                 {
@@ -219,17 +213,7 @@ void CardDeck::play()
             break;
         }  
     }
-    // if (deck->.getsize() > 15)
-    // {
-    //     refill();
-    //     deletedeck();
-    //     delete deck;
-    //     deck = new CardDeck(size);
-    //     // delete &Cards;
-    //     // // new Cards.size();
-    //     return;
-    // }
-    // delete deck;
+
 }
 
 void CardDeck::refill()
