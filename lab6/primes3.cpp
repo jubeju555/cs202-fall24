@@ -32,6 +32,39 @@ bool isPrime(int n)
   }
   return true;
 };
+int main()
+{
+vector <int>  v;
+
+int n;
+  int oldmax = 1;
+  while (cin >> n)
+  {
+    if (n > oldmax)
+    {
+      for (int i = oldmax + 1; i <= n; ++i)
+      {
+        if (isPrime(i))
+        {
+          v.push_back(i);
+        }
+      }
+      oldmax = n;
+      cout << "load factor: " <<  (v.size() / v.capacity()) << endl;
+
+    }
+    
+    if (find(v.begin(), v.end(), n) != v.end())
+    {
+      cout << "prime" << endl;
+    }
+    else
+    {
+      cout << "not prime" << endl;
+    }
+  }
+  return 0;
+}
 
 // int main()
 // {
@@ -68,39 +101,7 @@ bool isPrime(int n)
 //   return 0;
 // }
 
-int main()
-{
-vector <int>  v;
 
-int n;
-  int oldmax = 1;
-  while (cin >> n)
-  {
-    if (n > oldmax)
-    {
-      for (int i = oldmax + 1; i <= n; ++i)
-      {
-        if (isPrime(i))
-        {
-          v.push_back(i);
-        }
-      }
-      oldmax = n;
-      cout << (oldmax / v.size()) << endl;
-
-    }
-    
-    if (find(v.begin(), v.end(), n) != v.end())
-    {
-      cout << "prime" << endl;
-    }
-    else
-    {
-      cout << "not prime" << endl;
-    }
-  }
-  return 0;
-}
 
 // int main()
 // {
