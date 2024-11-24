@@ -22,7 +22,7 @@ bool isPrime(int n)
   // if more then 2 then its not prime, if not it is. 
   if (!(primecnt > 2))
   {
-    cout << n << " ";
+    cout << n << ", ";
     
     numprint++;
   }

@@ -14,9 +14,11 @@ use copy constructor to keep the memory of the old cards and keep playing. */
 // write the main constuctor 
 CardDeck::CardDeck(int n) : size(n), Cards(n)
 {
-  
-       Cards.resize(size);
-    refill();
+    for (int i = 0; i < n; i++)
+    {
+        Cards[i] = (i % 13) + 1;
+    }
+    shuffle();
 }
 // assignment operator
 CardDeck &CardDeck::operator=(const CardDeck &copy)
@@ -31,6 +33,7 @@ CardDeck &CardDeck::operator=(const CardDeck &copy)
 // copy constructor
 CardDeck::CardDeck(const CardDeck &arrayToCopy) : size(arrayToCopy.size), Cards(arrayToCopy.Cards)
 {
+
 }
 // destructor
 CardDeck::~CardDeck()
@@ -41,6 +44,7 @@ int CardDeck::getsize()
 {
     return Cards.size();
 }
+
 // display shuffle
 void CardDeck::printshuffle()
 {
@@ -49,7 +53,8 @@ void CardDeck::printshuffle()
     cout << "please pick a seed number: ";
     cin >> seed;
     cout << endl;
-    std::default_random_engine rng(seed);
+    default_random_engine rng(seed);
+
     // Printing our array
     for (int i = 0; i < 9; i++)
     {
@@ -64,6 +69,7 @@ void CardDeck::printshuffle()
     }
     cout << endl;
 }
+
 // game shuffle
 void CardDeck::shuffle()
 {
@@ -92,7 +98,7 @@ int CardDeck::dealcard()
 bool CardDeck::checkwin(int playervalue, int dealervalue)
 {
     string game;
- 
+
     if (playervalue > 21)
     {
         cout << "You bust!!" << endl;
