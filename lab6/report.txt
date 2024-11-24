@@ -1,9 +1,9 @@
 // test times
 /*
 make test times
-time1: .442s
-time2: .242s
-time3: .246s
+time1: 6.01s
+time2: 6.09s
+time3: 6.03s
 
 maketest times binary_search
 time 1: 6.08s
@@ -16,7 +16,7 @@ time2: 6.27s
 time3: 6.22s
 
 maxvalue times
-time1: 6.24s
+time1: 6.04s
 time2: 6.02s
 time3: 5.98s
 
